@@ -1,27 +1,27 @@
 pipeline {
-    agent any
+    agent {
+        label 'node'
+    }
 
     stages {
-        stage('pull code from github') {
+        stage('Git Clone') {
+            steps {
+                git branch: 'main', url: 'https://github.com/usernamessucks/node-js-sample.git'
+            }
+        }
+
+        stage('Build Docker Image') {
             steps {
                 script {
-                    sh 'ssh root@172.31.45.118 "cd /root/project/node-js-sample && git pull"'
+                    docker.build('myapp:latest')
                 }
             }
         }
 
-        stage('docker build') {
+        stage('Docker Compose') {
             steps {
                 script {
-                    sh 'ssh root@172.31.45.118 "cd /root/project/node-js-sample && docker build -t myapp ."'
-                }
-            }
-        }
-
-        stage('run container') {
-            steps {
-                script {
-                    sh 'ssh root@172.31.45.118 "cd /root/project/node-js-sample && docker-compose up -d "'
+                    sh 'docker-compose up -d'
                 }
             }
         }
