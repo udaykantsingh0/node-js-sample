@@ -10,9 +10,9 @@ COPY . .
 
 RUN apt-get update && apt-get install -y nginx
 
-# RUN rm /etc/nginx/sites-enabled/default
+RUN rm /etc/nginx/sites-enabled/default
 
-# COPY nginx.conf /etc/nginx/sites-enabled/
+COPY nginx.conf /etc/nginx/sites-enabled/
 
 EXPOSE 80
 EXPOSE 5000
