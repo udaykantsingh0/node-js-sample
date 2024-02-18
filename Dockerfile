@@ -8,7 +8,7 @@ RUN npm install
 
 COPY . .
 
-RUN /bin/sh -c /usr/bin/apt-get update && /usr/bin/apt-get install -y nginx
+RUN apt update && apt install -y nginx
 
 # RUN rm /etc/nginx/sites-enabled/default
 
