@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:14
 
 WORKDIR /app
 
@@ -8,7 +8,7 @@ RUN npm install
 
 COPY . .
 
-RUN apt update && apt install -y nginx
+RUN apt-get update && apt-get install -y nginx
 
 # RUN rm /etc/nginx/sites-enabled/default
 
