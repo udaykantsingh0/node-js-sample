@@ -5,12 +5,9 @@ app.set('port', (process.env.PORT || 3000))
 app.use(express.static(__dirname + '/public'))
 
 app.get('/', function(request, response) {
-  response.send('Hello World ')
-  response.send('This is main Branch')
+  response.send('This is aws-devops')
 })
-app.get('/', function(request, response) {
-  response.send('This is main Branch')
-})
+
 app.listen(app.get('port'), function() {
   console.log("Node app is running at localhost:" + app.get('port'))
 })
